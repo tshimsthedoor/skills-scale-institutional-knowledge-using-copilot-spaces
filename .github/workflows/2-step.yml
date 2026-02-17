@@ -108,6 +108,7 @@ jobs:
     name: Post next step content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
+    if: needs.check_step_work.result == 'success'
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
       ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
